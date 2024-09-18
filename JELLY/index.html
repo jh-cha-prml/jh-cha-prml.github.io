@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+          <style type="text/css">
+                 a:link { color: black; text-decoration: none;}
+                 a:visited { color: black; text-decoration: none;}
+                 a:hover { color: blue; text-decoration: underline;}
+				 #player {width: 300px;}​
+           </style>
+           <style>
+            .masthead-heading {
+            text-align: center; 
+          }</style>
+          <style>
+            .conversation-history {
+              background-color: skyblue;
+              padding: 10px;
+              border-radius: 20px;
+            }
+          </style>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>JELLY Demo</title>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet">
+        <!-- Fonts CSS-->
+        <link rel="stylesheet" href="css/heading.css">
+        <link rel="stylesheet" href="css/body.css">
+        <!-- Bootstrap slider CSS -->
+        <!-- <link rel="stylesheet" href="css/bootstrap-slider.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css" integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ==" crossorigin="anonymous" />
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+            <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">Audio Demos</a>
+                <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#abstract">Abstract</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#overview">Model Architecture</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#exps">Experiments</a></li>
+                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#ablation">English-to-Spanish</a></li> -->
+                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tts">English-to-French</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="masthead bg-white text-left"> <!-- text-black 사용 가능 -->
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading mb-0">JELLY: Joint Emotion Recognition and Context Reasoning with LLMs for Conversational Speech Synthesis </h1>
+                <!-- Masthead Subheading-->
+                <p class="pre-wrap lead">&nbsp;</p>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0 font-italic">Jun-Hyeok Cha, Seung-Bin Kim, Hyung-Seok Oh, and Seong-Whan Lee</p>
+            </div>
+        </header>
+
+        <!-- Abstraction -->
+        <section class="page-section portfolio" id="abstract">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <div class="text-center">
+                    <h2 class="page-section-heading text-secondary mb-0 d-inline-block">Abstract</h2>
+                </div>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom"></div>
+                </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 ml-auto">
+                      <p class="pre-wrap lead">Recently, there has been a growing demand for conversational speech synthesis (CSS) that generates more natural speech by considering the conversational context. To address this, we introduce JELLY, a novel CSS framework that integrates emotion recognition and context reasoning for generating appropriate speech in conversation by fine-tuning a large language model (LLM) with multiple partial LoRA modules. We propose an Emotion-aware Q-former encoder, which enables the LLM to perceive emotions in speech. The encoder is trained to align speech emotions with text, utilizing datasets of emotional speech. The entire model is then fine-tuned with conversational speech data to infer emotional context for generating emotional speech that is natural in conversation. Our experimental results demonstrate that JELLY excels in emotional context modeling, synthesizing speech that naturally aligns with conversation, while mitigating the scarcity of emotional conversational speech datasets.
+                      </p>
+                      <p class="pre-wrap lead">&nbsp;</p>
+                      <p class="pre-wrap lead">Official implementation of JELLY: <a href="https://github.com/jh-cha-prml/JELLY">https://github.com/jh-cha-prml/JELLY</a></p>
+                      <!-- <p class="pre-wrap lead">차 JELLY 김 JELLY 오 JELLY -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section bg-primary text-white morb-0" id="overview">
+          <div class="container">
+              <div class="text-center">
+                  <h2 class="page-section-heading d-inline-block">Model Architecture</h2>
+              </div>
+      
+              <div class="divider-custom divider-light">
+                  <p class="pre-wrap lead"></p>
+              </div>
+      
+              <div class="row justify-content-center">
+                  <!-- About Section Content-->
+                  <div class="row">
+                      <div class="col-lg-12 ml-auto">
+                          <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px">
+                              <tbody>
+                                  <tr>
+                                      <td colspan="3" style="text-align: center;">
+                                          <p><strong>The overview of JELLY</strong></p>
+                                          <img src="./assets/img/JELLY_overview.png" alt="JELLY Model Overview" style="max-width: 100%; height: auto; border-radius: 0px;">
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>  
+              </div>
+          </div>
+        </section>
+      
+
+        <section class="page-section bg-info text-white mb-0" id="exps">
+            <div class="container">
+                <!-- About Section Heading-->
+                <div class="text-center">
+                  <h2 class="page-section-heading d-inline-block text-white">Experiments</h2>
+                                        <p class="pre-wrap lead"></p>
+                </div>
+                
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                  <p class="pre-wrap lead"></p>
+                     
+                </div>
+                <div class="row justify-content-center table-responsive" style="width: 100%;">
+                <!-- About Section Content-->
+                <div class="row">
+                  <!-- conversation 1 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 1</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_1/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (neutral) : I am looking for a pan. <br>
+                          B (neutral) : No problem. What size would you like?<br>
+                          A (neutral) : A big one would be nice.<br>
+                          B (neutral) : How about this one? It's our biggest — sixteen' in diameter.<br>
+                          A (medium happy) : Oh, yes, I like that one, but it's too heavy.<br>
+                          B (neutral) : OK, try this one. It's made of aluminum.<br><br>
+                          
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (medium happy) : Oh, yes! This is much better. But it has an aluminum handle.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_1/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+  
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 2 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 2</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_2/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (neutral) : Excuse me, but do you have this T-shirt in size L? <br>
+                          B (neutral) : Sorry. We're out of size L's.<br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (weak fear) : Too bad. I really like it.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_2/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 3 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 3</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_3/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (neutral) : Hi, my name is Lean, and I'm from Russia. <br>
+                          B (neutral) : Nice to meet you, Lean. My name is Alike. I'm from Japan.<br>
+                          A (neutral) : To me English is a difficult language. <br>
+                          B (neutral) : A second language is always difficult. <br>
+                          A (neutral) : True, but English is harder than most. It's a crazy language. <br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (medium surprise) : A crazy language? Why do you say that?<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_3/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 4 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 4</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_4/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (neutral) : Good evening, may I help you? <br>
+                          B (neutral) : Yes. I would like to book a table for two at seven:thirty tomorrow evening.<br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (weak sad) : I am sorry, there are so many travelers that all our tables have been booked on that day.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_4/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 5 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 5</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_5/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (medium happy) : Beautiful weather, isn't it? <br>
+                          B (weak happy) : Yes, it is. Are you here on business?<br>
+                          A (weak happy) : No, I'm on a vacation to see the famous Three Gorges. <br>
+                          B (weak happy) : I'm going there for a tour, too. Is this your first trip to China?<br>
+                          A (medium happy) : Yes, it is. <br>
+                          <br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          B (medium happy) : Why don't we go together? I can show you around. I think you'll have a better time.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_5/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 6 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 6</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_6/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (weak happy) : Well, everything is packed and ready to go. <br>
+                          B (medium happy) : It's hard to believe that we're really leaving. The past two weeks was like a dream. <br>
+                          A (medium happy) : Yes. Just think the blue sky, sunshine, mouth-watering food, centuries-old castles. <br>
+                          B (weak happy) : And the people were so friendly! <br>
+                          A (medium happy) : Yeah, we would have been lost without the help of the locals. <br>
+                          B (weak happy) : Do you still remember the small restaurant at the corner of the street?<br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (medium happy) : Of course. That was the best pasta I've ever had.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_6/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+                    
+                </div>  
+            </div>
+        </section>
+
+
+
+
+        <div class="scroll-to-top d-lg-none position-fixed"><a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <script src="js/scripts.js"></script>
+        <!-- Bootstrap slider JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js" integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA==" crossorigin="anonymous"></script>
+
+        <!-- slider JS -->
+
+    </body>
+</html>

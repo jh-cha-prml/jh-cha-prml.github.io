@@ -18,11 +18,24 @@
           <style>
             .conversation-history {
               background-color: skyblue;
-              padding: 10px;
+              padding: 20px;
               border-radius: 20px;
             }
           </style>
-
+          <style>
+            .comparative {
+              background-color: whitesmoke;
+              padding: 20px;
+              border-radius: 20px;
+              width: 100%;
+              margin: 0 auto; 
+              font-size: 18px;
+              text-align: center; 
+              color: black;
+            }
+          </style>
+          
+          
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
@@ -81,7 +94,7 @@
                       <p class="pre-wrap lead">Recently, there has been a growing demand for conversational speech synthesis (CSS) that generates more natural speech by considering the conversational context. To address this, we introduce JELLY, a novel CSS framework that integrates emotion recognition and context reasoning for generating appropriate speech in conversation by fine-tuning a large language model (LLM) with multiple partial LoRA modules. We propose an Emotion-aware Q-former encoder, which enables the LLM to perceive emotions in speech. The encoder is trained to align speech emotions with text, utilizing datasets of emotional speech. The entire model is then fine-tuned with conversational speech data to infer emotional context for generating emotional speech that is natural in conversation. Our experimental results demonstrate that JELLY excels in emotional context modeling, synthesizing speech that naturally aligns with conversation, while mitigating the scarcity of emotional conversational speech datasets.
                       </p>
                       <p class="pre-wrap lead">&nbsp;</p>
-                      <p class="pre-wrap lead">Official implementation of JELLY: <a href="https://github.com/jh-cha-prml/JELLY">https://github.com/jh-cha-prml/JELLY</a></p>
+                      <p class="pre-wrap lead">Official implementation of JELLY: <a href="https://github.com/jh-cha-prml/JELLY" style="text-decoration: underline;">https://github.com/jh-cha-prml/JELLY</a></p>
                       <!-- <p class="pre-wrap lead">차 JELLY 김 JELLY 오 JELLY -->
                     </div>
                 </div>
@@ -132,7 +145,20 @@
                   <p class="pre-wrap lead"></p>
                      
                 </div>
-                <div class="row justify-content-center table-responsive" style="width: 100%;">
+
+                <p class="comparative">
+                We used the HiFi-GAN vocoder for all audio samples.<br><br>
+                <strong>Vocoded</strong> : Reconstructed from the ground-truth mel-spectrograms.<br>
+                <strong>FastSpeech 2</strong> : Baseline FastSpeech 2 model.<br>
+                <strong>GRU-based</strong> : Unidirectional GRU-based method with the ground-truth transcript of each utterance in the conversation history.<br>
+                <strong>ECSS</strong> : Heterogeneous graph-based method with the emotion label and the ground-truth transcript of each utterance in the conversation history.<br>
+                <strong>JELLY</strong> : Our proposed framework without the emotion label of each utterance in the conversation history.<br>
+                <strong>JELLY (speech_only)</strong> : Our proposed framework without the emotion label and ground-truth transcript of each utterance in the conversation history.<br>
+                </p>
+                
+                <hr style="border: 1px solid; margin: 40px 0;">
+
+                <div class="row justify-content-center table-responsive" style="width: 90%;">
                 <!-- About Section Content-->
                 <div class="row">
                   <!-- conversation 1 -->
@@ -155,7 +181,7 @@
                           A (medium happy) : Oh, yes! This is much better. But it has an aluminum handle.<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_1/recon.wav" type="audio/wav" />
                             </audio>
@@ -165,11 +191,12 @@
                                 <source id="" src="audio/conversation_1/fs2.wav" type="audio/wav" />
                             </audio>
                           </td>
-                          <td><p><strong>GRU-based</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>GRU-based</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_1/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_1/ecss.wav" type="audio/wav" />
@@ -185,6 +212,8 @@
                                 <source id="" src="audio/conversation_1/jelly_speech_only.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        <tr>
+
                         </tr>
                       </tbody>
                     </table>
@@ -209,7 +238,7 @@
                           A (weak fear) : Too bad. I really like it.<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_2/recon.wav" type="audio/wav" />
                             </audio>
@@ -224,6 +253,8 @@
                                 <source id="" src="audio/conversation_2/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
+                        <tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_2/ecss.wav" type="audio/wav" />
@@ -266,7 +297,7 @@
                           A (medium surprise) : A crazy language? Why do you say that?<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_3/recon.wav" type="audio/wav" />
                             </audio>
@@ -281,6 +312,8 @@
                                 <source id="" src="audio/conversation_3/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
+                        <tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_3/ecss.wav" type="audio/wav" />
@@ -320,7 +353,7 @@
                           A (weak sad) : I am sorry, there are so many travelers that all our tables have been booked on that day.<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_4/recon.wav" type="audio/wav" />
                             </audio>
@@ -335,6 +368,8 @@
                                 <source id="" src="audio/conversation_4/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
+                        <tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_4/ecss.wav" type="audio/wav" />
@@ -378,7 +413,7 @@
                           B (medium happy) : Why don't we go together? I can show you around. I think you'll have a better time.<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_5/recon.wav" type="audio/wav" />
                             </audio>
@@ -393,6 +428,8 @@
                                 <source id="" src="audio/conversation_5/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
+                        <tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_5/ecss.wav" type="audio/wav" />
@@ -436,7 +473,7 @@
                           A (medium happy) : Of course. That was the best pasta I've ever had.<br>
                           </p>
                         <tr>
-                          <td rowspan="1" style="vertical-align: top;"><p><strong>Reconstructed</strong></p>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_6/recon.wav" type="audio/wav" />
                             </audio>
@@ -451,6 +488,8 @@
                                 <source id="" src="audio/conversation_6/guo.wav" type="audio/wav" />
                             </audio>
                           </td>
+                        </tr>
+                        <tr>
                           <td><p><strong>ECSS</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_6/ecss.wav" type="audio/wav" />

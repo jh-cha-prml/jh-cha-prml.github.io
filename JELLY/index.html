@@ -149,7 +149,7 @@
                 <p class="comparative">
                 We used the HiFi-GAN vocoder for all audio samples.<br><br>
                 <strong>Vocoded</strong> : Reconstructed from the ground-truth mel-spectrograms.<br>
-                <strong>FastSpeech 2</strong> : Baseline FastSpeech 2 model.<br>
+                <strong>FastSpeech 2</strong> : Baseline FastSpeech 2 model without context-modeling.<br>
                 <strong>GRU-based</strong> : Unidirectional GRU-based method with the ground-truth transcript of each utterance in the conversation history.<br>
                 <strong>ECSS</strong> : Heterogeneous graph-based method with the emotion label and the ground-truth transcript of each utterance in the conversation history.<br>
                 <strong>JELLY</strong> : Our proposed framework without the emotion label of each utterance in the conversation history.<br>
@@ -503,6 +503,179 @@
                           <td><p><strong>JELLY (speech_only)</strong></p>
                             <audio id="" controls >
                                 <source id="" src="audio/conversation_6/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 7 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 7</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_7/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (medium happy) : Did you get a nice tree? <br>
+                          B (medium happy) : Sure did. It's a beauty. Where do you want it? <br>
+                          A (medium happy) : Let's put it over there. <br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (medium happy) : Let's go to work. We want to have the tree ready to light up by evening.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_7/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+                  <!-- conversation 8 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 8</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_8/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          B (neutral) : Excuse me, when is the next train to Los Angeles? <br>
+                          A (neutral) : Umm, ten-fifteen a.m.. <br>
+                          B (neutral) : Can I get the ticket here? <br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (weak sad) : Sorry. You have to buy your ticket at the next counter.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_8/jelly_speech_only.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> </p>
+                  </div>
+                  
+                  <hr style="border: 2px solid lightgray; margin: 40px 0;">
+
+
+                  <!-- conversation 9 -->
+                  <div class="col-lg-12 ml-auto">
+                    <table class="table table-responsive align-content-center" style="background-color: whitesmoke; border-radius: 20px;">
+                      <tbody> <strong style="font-size: 25px;">Conversation 9</strong><br>
+                          <audio id="" controls >
+                            <source id="" src="audio/conversation_9/history.wav" type="audio/wav" />
+                          </audio>
+                          <br>
+                          <p class="conversation-history" style="font-size: 20px;">
+                          A (medium happy) : John, do you mind helping me prepare for the picnic? <br>
+                          B (medium happy) : No. Have you checked the weather report? <br>
+                          A (medium happy) : Yes. It says it will be sunny all day. No sign of rain at all. <br>
+                          B (medium happy) : I'd like some toast and chicken wings. <br><br>
+
+                          <span><strong style="text-decoration: underline;">Current turn</strong></span> <br>
+                          A (weak happy) : OK. Please take some fruit salad and crackers for me.<br>
+                          </p>
+                        <tr>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>Vocoded</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/recon.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td rowspan="1" style="vertical-align: top;"><p><strong>FastSpeech 2</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/fs2.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>GRU-based</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/guo.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p><strong>ECSS</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/ecss.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/jelly.wav" type="audio/wav" />
+                            </audio>
+                          </td>
+                          <td><p><strong>JELLY (speech_only)</strong></p>
+                            <audio id="" controls >
+                                <source id="" src="audio/conversation_9/jelly_speech_only.wav" type="audio/wav" />
                             </audio>
                           </td>
                         </tr>
